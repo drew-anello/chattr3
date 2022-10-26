@@ -2,7 +2,6 @@ from django.shortcuts import render
 
 # Add the following import
 from django.http import HttpResponse
-
 # Define the home view
 
 
@@ -11,4 +10,4 @@ def home(request):
 
 
 def about(request):
-    return HttpResponse('This is the about page')
+    return render(request, 'about.html')
