@@ -13,5 +13,24 @@
     <a href="{% url 'rooms_delete' room.id %}">Delete</a>
   </div>
 </div>
-
+<div class="col s6">
+  <table class="striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Message</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for chat in room.chat_set.all %}
+      <tr>
+        <td>{{chat.name}}</td>
+        <td>{{chat.message}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+</div>
 {% endblock %}
+

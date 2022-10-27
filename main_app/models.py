@@ -1,3 +1,4 @@
+from email import message
 from unicodedata import name
 from django.db import models
 from django.urls import reverse
@@ -14,3 +15,13 @@ class Room(models.Model):
 
     def get_absolute_url(self):
         return reverse('detail', kwargs={'room_id': self.id})
+
+
+class Chat(models.Model):
+    name = models.CharField(max_length=30)
+    message = models.TextField(max_length=500)
+
+    room = models.ForeignKey(Room, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
