@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 # Add the following import
 from django.http import HttpResponse
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 # Define the home view
 from .models import Room
 
@@ -10,6 +10,18 @@ from .models import Room
 class RoomCreate(CreateView):
     model = Room
     fields = '__all__'
+    success_url = '/rooms/'
+
+
+class RoomUpdate(UpdateView):
+    model = Room
+    # Let's disallow the renaming of a cat by excluding the name field!
+    fields = ['name', 'description']
+
+
+class RoomDelete(DeleteView):
+    model = Room
+    success_url = '/rooms/'
 
 
 def home(request):
