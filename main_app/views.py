@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # Add the following import
 from django.http import HttpResponse
@@ -42,3 +42,16 @@ def rooms_detail(request, room_id):
     room = Room.objects.get(id=room_id)
     chat_form = ChatForm()
     return render(request, 'rooms/detail.html', {'room': room, 'chat_form': chat_form})
+
+
+def add_chat(request, room_id):
+    # create the ModelForm using the data in request.POST
+    form = ChatForm(request.POST)
+    # validate the form
+    if form.is_valid():
+        # don't save the form to the db until it
+        # has the cat_id assigned
+        new_chat = form.save(commit=False)
+        new_chat.room_id = room_id
+        new_chat.save()
+    return redirect('detail', room_id=room_id)

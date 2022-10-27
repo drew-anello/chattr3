@@ -15,7 +15,8 @@
 </div>
 <div class="col s6">
   <!-- new code below -->
-  <form method="post">
+  <form action="{% url 'add_chat' room.id %}" method="post">
+    
     {% csrf_token %} {{ chat_form.as_p }}
     <input type="submit" class="btn" value="Send Message" />
   </form>
