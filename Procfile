@@ -1,0 +1,1 @@
+web: gunicorn chattr3.wsgi
