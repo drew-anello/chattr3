@@ -44,6 +44,13 @@ def rooms_detail(request, room_id):
     return render(request, 'rooms/detail.html', {'room': room, 'chat_form': chat_form})
 
 
+def form_valid(self, form):
+
+    form.instance.user = self.request.user
+
+    return super().form_valid(form)
+
+
 def add_chat(request, room_id):
     # create the ModelForm using the data in request.POST
     form = ChatForm(request.POST)
