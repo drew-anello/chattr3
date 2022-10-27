@@ -2,8 +2,14 @@ from django.shortcuts import render
 
 # Add the following import
 from django.http import HttpResponse
-from .models import Room
+from django.views.generic.edit import CreateView
 # Define the home view
+from .models import Room
+
+
+class RoomCreate(CreateView):
+    model = Room
+    fields = '__all__'
 
 
 def home(request):
