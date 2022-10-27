@@ -5,11 +5,12 @@ from django.http import HttpResponse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 # Define the home view
 from .models import Room
+from .forms import ChatForm
 
 
 class RoomCreate(CreateView):
     model = Room
-    fields = '__all__'
+    fields = ['name', 'description']
     success_url = '/rooms/'
 
 
@@ -39,4 +40,5 @@ def rooms_index(request):
 
 def rooms_detail(request, room_id):
     room = Room.objects.get(id=room_id)
-    return render(request, 'rooms/detail.html', {'room': room})
+    chat_form = ChatForm()
+    return render(request, 'rooms/detail.html', {'room': room, 'chat_form': chat_form})

@@ -14,6 +14,12 @@
   </div>
 </div>
 <div class="col s6">
+  <!-- new code below -->
+  <form method="post">
+    {% csrf_token %} {{ chat_form.as_p }}
+    <input type="submit" class="btn" value="Send Message" />
+  </form>
+  <!-- new code above -->
   <table class="striped">
     <thead>
       <tr>
@@ -33,4 +39,3 @@
 </div>
 </div>
 {% endblock %}
-
