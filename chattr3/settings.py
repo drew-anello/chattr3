@@ -10,8 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
-import django_heroku
+# import django_heroku
 from pathlib import Path
+from django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +27,7 @@ SECRET_KEY = 'django-insecure-olr)^85phd-v6m6kkcy8cjve9_o4h%enx&2*py(oxa9xbs^m1p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['chattr3.herokuapp.com']
 
 
 # Application definition
@@ -77,10 +78,20 @@ WSGI_APPLICATION = 'chattr3.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'chattr3',
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'chattr3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd5nc2q5cqgjelp',
+        'USER': 'xfdfkuvtpdbbdy',
+        'PASSWORD': '0c0fba97b318e559a46bd42bcf3db5f2ddf9ef6e16a475781f6f7683c86f2803',
+        'HOST': 'ec2-54-160-200-167.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
@@ -129,4 +140,4 @@ LOGOUT_REDIRECT_URL = '/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
